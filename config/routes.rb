@@ -1,4 +1,8 @@
 Myapp::Application.routes.draw do
+  resources :resources
+
+  resources :comments
+
   resources :posts
 
   resources :users
