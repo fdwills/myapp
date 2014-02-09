@@ -1,17 +1,24 @@
 %h1 Listing posts
 
-%table
+%table.table
   %tr
+    %th 标题
+    %th 内容
+    %th 发表者
+    %th 发表日期
     %th
     %th
     %th
-
-  - @posts.each do |post|
+  - current_user.posts.each do |post|
     %tr
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= post.title
+      %td= post.content
+      %td= post.user.name
+      %td= post.created_at
+      %td= link_to '查看', user_post_path(current_user, post)
+      %td= link_to '编辑', edit_user_post_path(current_user, post)
+      %td= link_to '显示', user_post_path(current_user, post), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Post', new_post_path
+= link_to '新建', new_user_post_path(current_user)

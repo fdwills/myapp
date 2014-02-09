@@ -1,11 +1,19 @@
 Myapp::Application.routes.draw do
-  resources :resources
+  resources :resources, only: [:index, :show]
 
-  resources :comments
+  resources :comments, only: [:index, :show]
 
-  resources :posts
+  resources :posts, only: [:index, :show]
 
-  resources :users
+  resources :users do
+    resources :posts
+    resources :comments
+    resources :resources
+  end
 
-  root :to => 'visitors#new'
+  resource :login
+
+
+
+  root :to => 'visitors#index'
 end

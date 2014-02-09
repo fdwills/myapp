@@ -18,6 +18,11 @@ gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
+
+gem 'kaminari'
+gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'erb2haml'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

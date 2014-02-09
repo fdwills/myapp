@@ -1,6 +1,7 @@
 class VisitorsController < ApplicationController
 
-  def new
+  def index
+    @posts = Post.recent.page(params[:page]).per(10)
   end
 
 end

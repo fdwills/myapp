@@ -9,5 +9,10 @@
         %span.icon-bar
       = link_to 'Home', root_path, class: 'navbar-brand'
     .collapse.navbar-collapse
-      %ul.nav.navbar-nav
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user == nil
+          = link_to 'login', login_path, class: 'navbar-brand'
+        - else
+          %p.navbar-text= link_to "Account: #{current_user.name}", user_path(current_user)
+          = link_to 'logout', login_path, :confirm => 'Are you sure to logout?', :method => :delete, class: 'navbar-brand'
         = render 'layouts/navigation_links'

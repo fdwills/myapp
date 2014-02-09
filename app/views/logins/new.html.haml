@@ -1,0 +1,14 @@
+%h1 ログイン画面
+
+%p
+  %font{:color => "red"}= flash[:alert]
+= form_tag login_path do
+  %table#login_form
+    %tr
+      %td= label_tag :name, 'ユーザー名'
+      %td= text_field_tag :name, params[:name]
+    %tr
+      %td= label_tag :pass, 'パスワード'
+      %td= password_field_tag :pass, params[:pass]
+    %tr
+      %td= submit_tag "ログイン"
