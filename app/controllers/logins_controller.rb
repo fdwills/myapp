@@ -4,7 +4,7 @@ class LoginsController < ApplicationController
   end
 
   def create
-    user = User.find_by_name login_params[:name]
+    user = User.find_by_email login_params[:email]
     if user && user.authenticate(login_params[:pass])
       session[:user_id] = user.id
       redirect_to root_path
@@ -23,6 +23,6 @@ class LoginsController < ApplicationController
   private
 
   def login_params
-    params.require(:login).permit(:name, :pass)
+    params.require(:login).permit(:email, :pass)
   end
 end

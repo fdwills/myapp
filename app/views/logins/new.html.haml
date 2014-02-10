@@ -1,14 +1,14 @@
-%h1 ログイン画面
-
-%p
-  %font{:color => "red"}= flash[:alert]
-= form_tag login_path do
-  %table#login_form
-    %tr
-      %td= label_tag :name, 'ユーザー名'
-      %td= text_field_tag :name, params[:name]
-    %tr
-      %td= label_tag :pass, 'パスワード'
-      %td= password_field_tag :pass, params[:pass]
-    %tr
-      %td= submit_tag "ログイン"
+.center
+  .col-sm-6
+    %font{:color => "red"}= flash[:alert]
+    = form_for :login, method: 'post', url: login_path, html: { class: ['form-signin'], role: 'form'} do |t|
+      %h2.form-signin-heading Please sign in
+      .form-group
+        = t.text_field :email, { class: 'form-control', placeholder: 'Email', type: 'email'}
+      .form-group
+        = t.password_field :pass, { class: 'form-control', placeholder: 'Password', type: 'password'}
+      %label.checkbox
+        %input{:type => "checkbox", :value => "remember-me"}/
+        Remember me
+      .form-group
+        = t.submit 'Sign in', class: ['btn', 'btn-lg', 'btn-primary', 'btn-block']

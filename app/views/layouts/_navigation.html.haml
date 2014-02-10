@@ -33,8 +33,8 @@
             - else
               = form_for :login, method: 'post', url: login_path, html: { class: ['navbar-form', 'navbar-right'], role: 'form'} do |t|
                 .form-group
-                  = t.text_field :name, class: 'form-control', placeholder: 'Username'
+                  = t.text_field :email, { class: 'form-control', placeholder: 'Email', type: 'email'}
                 .form-group
-                  = t.password_field :pass, class: 'form-control', placeholder: 'Password'
+                  = t.password_field :pass, { class: 'form-control', placeholder: 'Password', type: 'password'}
                 .form-group
                   = t.submit 'Sign in', class: ['btn-success', 'btn']
