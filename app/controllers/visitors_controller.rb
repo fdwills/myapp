@@ -4,4 +4,8 @@ class VisitorsController < ApplicationController
     @posts = Post.recent.page(params[:page]).per(10)
   end
 
+  def top
+  end
+
+
 end

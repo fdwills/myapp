@@ -14,6 +14,5 @@ Myapp::Application.routes.draw do
   resource :login
 
 
-
   root :to => 'visitors#index'
 end
