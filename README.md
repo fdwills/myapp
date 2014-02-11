@@ -12,3 +12,6 @@ Myapp
 
     # change erb/html to yaml
     bundle exec rake haml:replace_erbs
+
+    bundle exec rails g kaminari:config
+    bundle exec rails g kaminari:views  bootstrap

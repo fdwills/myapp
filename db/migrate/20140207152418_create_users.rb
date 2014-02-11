@@ -4,6 +4,5 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
-    drop_table :foos
   end
 end

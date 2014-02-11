@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20140211070837) do
     t.integer  "state",        limit: 1, default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "s_type",       limit: 1, default: 0, null: false
     t.string   "avatar"
     t.binary   "introduction"
-    t.integer  "s_type",       limit: 1, default: 0, null: false
   end
 
   create_table "users", force: true do |t|

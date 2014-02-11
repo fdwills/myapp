@@ -9,18 +9,18 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to 'Project', root_path, class: 'navbar-brand'
+          = link_to 'Blom', root_path, class: 'navbar-brand'
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
-            %li= link_to 'home', visitors_path, class: 'active'
+            %li= link_to 'recent', visitors_path, class: 'active'
             %li= link_to 'about', '#about'
-            %li= link_to 'contact', '#contact'
+            %li= link_to 'contact', 'https://github.com/fdwills/'
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                Dropdown
+                samples
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to 'Action', '#'
+                %li= link_to 'wills\' album', '/users/1/home'
                 %li= link_to 'Action2', '#'
                 %li= link_to 'Action3', '#'
                 %li.divider

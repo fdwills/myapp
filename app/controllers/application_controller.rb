@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :login?
+  helper_method :author?
   def current_user
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
@@ -13,6 +14,14 @@ class ApplicationController < ActionController::Base
 
   def login?
     return current_user != nil
+  end
+
+  def author?
+    if login? && @resource.present?
+      return current_user.id == @resource.user_id
+    else
+      false
+    end
   end
 
   def writeable?

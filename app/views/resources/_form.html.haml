@@ -16,7 +16,7 @@
     = t.text_area :introduction, { class: 'form-control', placeholder: 'introduction', columns: 5}
 .form-group
   = t.label :avatar, 'upload', class: ['col-sm-3', 'control-label']
-  = image_tag(@resource.avatar_url) if @resource.avatar?
   .col-sm-8
     = t.file_field :avatar
     = t.hidden_field :avatar_cache
+= image_tag(@resource.avatar_url) if @resource.avatar?
