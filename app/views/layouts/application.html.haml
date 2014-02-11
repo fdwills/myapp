@@ -19,6 +19,7 @@
         %p.lead.blog-description The official example template of creating
       .row
         .col-sm-8.blog-main
+          %p#notice= notice
           = yield
         .col-sm-3.col-sm-offset-1.blog-sidebar
           .sidebar-module.sidebar-module-inset
@@ -52,12 +53,5 @@
                 %a{:href => "#"} Twitter
               %li
                 %a{:href => "#"} Facebook
-    .blog-footer
-      %p
-        Blog template built for
-        %a{:href => "http://getbootstrap.com"} Bootstrap
-        by
-        = succeed "." do
-          %a{:href => "https://twitter.com/mdo"} @mdo
-      %p
-        %a{:href => "#"} Back to top
+    = render 'layouts/footer'
+= debug(params) if Rails.env.development?

@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
   def login?
     return current_user != nil
   end
+
+  def writeable?
+    unless login?
+      return redirect_to login_path, notice: 'To do that, you need to login!'
+    end
+  end
 end

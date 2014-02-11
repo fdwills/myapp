@@ -1,6 +1,10 @@
 class LoginsController < ApplicationController
+  def new
+    render :layout => 'signin'
+  end
+
   def show
-      render :new
+    render :new
   end
 
   def create
@@ -10,7 +14,7 @@ class LoginsController < ApplicationController
       redirect_to root_path
     else
       flash.now.alert = "请再输入一遍"
-      render :new
+      render :new, :layout => 'signin'
     end
   end
 
