@@ -1,12 +1,34 @@
-%p#notice= notice
+- if login?
+  = form_for current_user, as: :user, method: :put, url: user_path(current_user), html: { class: ['form-horizontal'], role: 'form' , align: 'center'} do |t|
+    .form-group
+      = t.label :name, 'Nickname', class: ['col-sm-3', 'control-label']
+      .col-sm-8
+        = t.text_field :name, { class: 'form-control', placeholder: 'Nickname'}
+    .form-group
+      = t.label :email, 'Email', class: ['col-sm-3', 'control-label']
+      .col-sm-8
+        = t.text_field :email, { class: 'form-control', placeholder: 'Email', type: 'email'}
+    .form-group
+      = t.label :introduction, 'Introduction', class: ['col-sm-3', 'control-label']
+      .col-sm-8
+        = t.text_area :introduction, { class: 'form-control', placeholder: 'Introduction of yourself'}
+    .form-group
+      = t.submit 'Update', class: ['btn', 'btn-lg', 'btn-primary']
+  %table.table.table-striped.table-bordered
+    %tr
+      %th Posts
+      %td= link_to 'Posts', user_posts_path(current_user), class: ['btn', 'btn-sm', 'btn-primary']
+    %tr
+      %th Resources
+      %td= link_to 'Resources', user_resources_path(current_user), class: ['btn', 'btn-sm', 'btn-primary']
+    %tr
+      %th Comments
+      %td= link_to 'Comments', user_comments_path(current_user), class: ['btn', 'btn-sm', 'btn-primary']
+    %tr
+      %th Home preview
+      %td= link_to 'home', home_user_path(current_user), class: ['btn', 'btn-sm', 'btn-primary']
 
-= link_to 'posts', user_posts_path(current_user)
-\|
-= link_to 'comments', user_comments_path(current_user)
+- else
+  %h2 Please login first
 
-%p
-
-= link_to 'Edit', edit_user_path(current_user)
-\|
-= link_to 'Back', users_path
 

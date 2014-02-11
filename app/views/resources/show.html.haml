@@ -1,6 +1,8 @@
-%p#notice= notice
+%center
+  %h3= @resource.title
+= image_tag(@resource.avatar_url) if @resource.avatar?
+%h4= @resource.introduction
 
-
-= link_to 'Edit', edit_resource_path(@resource)
+= link_to 'Edit', edit_user_resource_path(current_user, @resource)
 \|
-= link_to 'Back', resources_path
+= link_to 'Back', user_resources_path(current_user)

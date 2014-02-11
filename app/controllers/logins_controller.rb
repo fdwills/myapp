@@ -4,7 +4,7 @@ class LoginsController < ApplicationController
   end
 
   def show
-    render :new
+    render :new, :layout => 'signin'
   end
 
   def create

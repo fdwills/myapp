@@ -1,7 +1,22 @@
-= simple_form_for(@resource) do |f|
-  = f.error_notification
-
-  .form-inputs
-
-  .form-actions
-    = f.button :submit
+.form-group
+  = t.label :title, 'Title', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :title, { class: 'form-control', placeholder: 'Nickname'}
+.form-group
+  = t.label :state, 'State', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :state, { class: 'form-control', placeholder: 'state'}
+.form-group
+  = t.label :s_type, 'type', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :s_type, { class: 'form-control', placeholder: 'type'}
+.form-group
+  = t.label :introduction, 'introduction', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_area :introduction, { class: 'form-control', placeholder: 'introduction', columns: 5}
+.form-group
+  = t.label :avatar, 'upload', class: ['col-sm-3', 'control-label']
+  = image_tag(@resource.avatar_url) if @resource.avatar?
+  .col-sm-8
+    = t.file_field :avatar
+    = t.hidden_field :avatar_cache

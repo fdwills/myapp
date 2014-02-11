@@ -1,5 +1,8 @@
-%h1 New resource
+- if @resource.errors.any?
+  = render partial: 'alert_error', locals: { model: @resource }
+= form_for :resource, method: 'post', url: user_resources_path, html: { class: 'form-signin-for-regist', role: 'form' } do |t|
+  %h2 Create new resource
+  = render partial: 'form', locals: { t: t}
+  .form-group
+    = t.submit 'Submit!', class: ['btn', 'btn-lg', 'btn-primary']
 
-= render 'form'
-
-= link_to 'Back', resources_path

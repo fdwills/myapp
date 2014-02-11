@@ -4,7 +4,7 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
-    @resources = Resource.all
+    @resources = current_user.resources.recent.page(params[:page]).per(10)
   end
 
   # GET /resources/1
@@ -25,7 +25,7 @@ class ResourcesController < ApplicationController
   # POST /resources.json
   def create
     @resource = Resource.new(resource_params)
-
+    @resource.user_id = current_user.id
     respond_to do |format|
       if @resource.save
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
@@ -56,7 +56,7 @@ class ResourcesController < ApplicationController
   def destroy
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to resources_url }
+      format.html { redirect_to user_resources_path(current_user) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params[:resource]
+      params.require(:resource).permit(:title, :s_type, :state, :avatar, :introduction)
     end
 end

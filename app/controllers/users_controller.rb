@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :home]
 
+  def home
+    @resources = @user.resources
+    render :layout => 'home'
+  end
   # GET /users
   # GET /users.json
   def index
@@ -32,7 +36,7 @@ class UsersController < ApplicationController
         format.html { redirect_to login_path, notice: 'User was successfully created. Please login!' }
         format.json { render action: 'show', status: :created, location: @user }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', :layout => 'signin' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -70,6 +74,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction)
     end
 end

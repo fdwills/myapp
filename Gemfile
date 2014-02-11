@@ -22,6 +22,7 @@ gem 'therubyracer', :platform=>:ruby
 gem 'kaminari'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'erb2haml'
+gem 'carrierwave'
 
 group :development do
   gem 'better_errors'

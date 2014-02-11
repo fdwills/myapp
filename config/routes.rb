@@ -9,10 +9,14 @@ Myapp::Application.routes.draw do
     resources :posts
     resources :comments
     resources :resources
+    member do
+      get :home
+    end
   end
 
   resource :login
 
+  resources :visitors, only: [:index]
 
-  root :to => 'visitors#index'
+  root :to => 'visitors#top'
 end

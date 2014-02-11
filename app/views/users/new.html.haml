@@ -3,19 +3,19 @@
 = form_for :user, method: 'post', url: users_path, html: { class: 'form-signin-for-regist', role: 'form', align: 'center'} do |t|
   %h2  填写下列信息
   .form-group
-    = t.label :name, '名前', class: ['col-sm-3', 'control-label']
+    = label 'Nickname', 'Nickname', class: ['col-sm-3', 'control-label']
     .col-sm-8
       = t.text_field :name, { class: 'form-control', placeholder: 'Nickname'}
   .form-group
-    = t.label :email, 'Email', class: ['col-sm-3', 'control-label']
+    = label 'Email', 'Email', class: ['col-sm-3', 'control-label']
     .col-sm-8
       = t.text_field :email, { class: 'form-control', placeholder: 'Email', type: 'email'}
   .form-group
-    = t.label :password, '密码', class: ['col-sm-3', 'control-label']
+    = label 'Password', 'Password', class: ['col-sm-3', 'control-label']
     .col-sm-8
       = t.password_field :password, { class: 'form-control', placeholder: 'Password', type: 'password'}
   .form-group
-    = t.label :password_confirmation, '密码确认', class: ['col-sm-3', 'control-label']
+    = label 'Password Again', 'Password Again', class: ['col-sm-3', 'control-label']
     .col-sm-8
       = t.password_field :password_confirmation, { class: 'form-control', placeholder: 'Password Again', type: 'password'}
   .form-group

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209222418) do
+ActiveRecord::Schema.define(version: 20140211070837) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id",              default: 0
@@ -33,12 +33,14 @@ ActiveRecord::Schema.define(version: 20140209222418) do
   end
 
   create_table "resources", force: true do |t|
-    t.integer  "user_id",                          null: false
-    t.string   "title",                            null: false
-    t.integer  "state",      limit: 1, default: 0, null: false
-    t.integer  "s_type",     limit: 1,             null: false
+    t.integer  "user_id",                            null: false
+    t.string   "title",                              null: false
+    t.integer  "state",        limit: 1, default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar"
+    t.binary   "introduction"
+    t.integer  "s_type",       limit: 1, default: 0, null: false
   end
 
   create_table "users", force: true do |t|

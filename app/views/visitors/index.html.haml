@@ -5,13 +5,10 @@
     %th 内容
     %th 发表者
     %th 发表日期
-  - @posts.try(:each) do |post|
+  - @resources.try(:each) do |resource|
     %tr
-      %td= link_to post.title, post_path(post)
-      %td= post.content
-      %td= post.user.name
-      %td= post.created_at
-  = paginate @posts
-
-- if login?
-  = link_to 'new Post', new_user_post_path(current_user), class: 'btn-create'
+      %td= link_to resource.title,resource_path(resource)
+      %td= resource.introduction
+      %td= resource.user.name
+      %td= resource.created_at
+  = paginate @resources
