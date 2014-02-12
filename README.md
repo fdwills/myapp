@@ -15,3 +15,7 @@ Myapp
 
     bundle exec rails g kaminari:config
     bundle exec rails g kaminari:views  bootstrap
+
+    # to production
+    bundle exec rake db:migrate RAILS_ENV=production
+    bundle exec rake assets:precompile RAILS_ENV=production
