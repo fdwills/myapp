@@ -7,9 +7,9 @@
         .container
           .carousel-caption
             %h1
-              = resource.title
+              = resource.title.html_safe
             %p
-              = resource.introduction
+              = resource.introduction.html_safe
             %p
               -#%a.btn.btn-lg.btn-primary{:href => "#", :role => "button"} Sign up today
   %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}

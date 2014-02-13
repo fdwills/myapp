@@ -1,6 +1,6 @@
 %h3 最新发表列表
-%table.table
-  %tr
+%table.table.table-condensed
+  %tr.info
     %th 标题
     %th 内容
     %th 发表者
@@ -9,6 +9,6 @@
     %tr
       %td= link_to resource.title,resource_path(resource)
       %td= resource.introduction
-      %td= resource.user.name
+      %td= link_to resource.user.name, home_user_path(resource.user)
       %td= resource.created_at
 %center= paginate @resources

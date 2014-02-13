@@ -1,7 +1,13 @@
-%center
-  %h3= @resource.title
-= image_tag(@resource.avatar_url) if @resource.avatar?
-%h4= @resource.introduction
+%table.table.table-condensed
+  %tr{align: "center"}
+    %td.success
+      %h3= @resource.title.html_safe
+  %tr
+    %td= image_tag(@resource.avatar_url) if @resource.avatar?
+  %tr
+    %td.info introduction
+  %tr
+    %td= @resource.introduction.html_safe
 
 - if author?
   = link_to 'Edit', edit_user_resource_path(current_user, @resource)

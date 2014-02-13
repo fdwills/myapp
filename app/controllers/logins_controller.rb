@@ -13,7 +13,7 @@ class LoginsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      flash.now.alert = "请再输入一遍"
+      flash.now.alert = "Email or password is not correct."
       render :new, :layout => 'signin'
     end
   end

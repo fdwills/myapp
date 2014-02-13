@@ -28,8 +28,8 @@
           .sidebar-module.sidebar-module-inset
             %h4 About
             %p
-              Etiam porta
-              %em sem malesuada magna
+              I start the project from 2014.01 for fun. Try to make album more easier and give my alnum a
+              %em new life.
           .sidebar-module
             %h4 Archives
             %ol.list-unstyled
@@ -50,11 +50,8 @@
           .sidebar-module
             %h4 Elsewhere
             %ol.list-unstyled
-              %li
-                %a{:href => "#"} GitHub
-              %li
-                %a{:href => "#"} Twitter
-              %li
-                %a{:href => "#"} Facebook
+              %li= link_to 'GitHub', 'https://github.com/fdwills/myapp'
+              %li= link_to 'blog', 'http://fdwills.com'
+              %li= link_to 'Facebook', 'https://www.facebook.com/wei.renzhong.1'
     = render 'layouts/footer'
 = debug(params) if Rails.env.development?
