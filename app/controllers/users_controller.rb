@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :home]
 
   def home
-    @resources = @user.resources
+    @resources = @user.resources.released
     render :layout => 'home'
   end
   # GET /users
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'show' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
