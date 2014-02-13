@@ -18,4 +18,10 @@ Myapp
 
     # to production
     bundle exec rake db:migrate RAILS_ENV=production
+
+    # minify
     bundle exec rake assets:precompile RAILS_ENV=production
+
+## attention
+
+* restart production server when js and css sass is changed

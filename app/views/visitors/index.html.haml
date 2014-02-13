@@ -8,7 +8,7 @@
   - @resources.try(:each) do |resource|
     %tr
       %td= link_to resource.title,resource_path(resource)
-      %td= resource.introduction
+      %td= cut_short(resource.introduction, 15).html_safe
       %td= link_to resource.user.name, home_user_path(resource.user)
-      %td= resource.created_at
+      %td= resource.created_at.to_s(:db)
 %center= paginate @resources

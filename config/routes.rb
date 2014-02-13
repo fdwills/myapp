@@ -1,4 +1,6 @@
 Myapp::Application.routes.draw do
+  resources :inforamtions
+
   resources :resources, only: [:index, :show]
 
   resources :comments, only: [:index, :show]

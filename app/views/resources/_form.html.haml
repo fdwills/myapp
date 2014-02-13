@@ -2,11 +2,13 @@
   = t.label :title, 'Title', class: ['col-sm-3', 'control-label']
   .col-sm-8
     = t.text_field :title, { class: 'form-control', placeholder: 'Nickname'}
+    %p.help-block Input title within 255 characters.
 .form-group
   = t.label :state, 'State', class: ['col-sm-3', 'control-label']
   .col-sm-8
-    = t.text_field :state, { class: 'form-control', placeholder: 'state'}
-.form-group
+    = t.select :state, [["release", "0"], ["draft", "1"]], {}, { class: 'form-control', placeholder: 'state'}
+    %p.help-block With release option, picture will be shown in album. Picture with Draft option is for edit, will not be shown in album until state is changed.
+-#.form-group
   = t.label :s_type, 'type', class: ['col-sm-3', 'control-label']
   .col-sm-8
     = t.text_field :s_type, { class: 'form-control', placeholder: 'type'}
@@ -14,9 +16,11 @@
   = t.label :introduction, 'introduction', class: ['col-sm-3', 'control-label']
   .col-sm-8
     = t.text_area :introduction, { class: 'form-control', placeholder: 'introduction', columns: 5}
+    %p.help-block Introduction will also be shown on pictures under title.
 .form-group
   = t.label :avatar, 'upload', class: ['col-sm-3', 'control-label']
   .col-sm-8
     = t.file_field :avatar
+    %p.help-block Select and updoad your pictures with format jpg, jpeg, gif or png.
     = t.hidden_field :avatar_cache
 = image_tag(@resource.avatar_url) if @resource.avatar?

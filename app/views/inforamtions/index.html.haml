@@ -1,0 +1,17 @@
+%h1 Listing inforamtions
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @inforamtions.each do |inforamtion|
+    %tr
+      %td= link_to 'Show', inforamtion
+      %td= link_to 'Edit', edit_inforamtion_path(inforamtion)
+      %td= link_to 'Destroy', inforamtion, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Inforamtion', new_inforamtion_path

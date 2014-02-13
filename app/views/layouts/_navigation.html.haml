@@ -28,7 +28,7 @@
                 %li= link_to 'Separated link1', '#'
                 %li= link_to 'Separated link1', '#'
             - if login?
-              %li= link_to "Account: #{current_user.name}", user_path(current_user)
+              %li= link_to "#{current_user.name}'s Home", user_path(current_user)
               %li= link_to 'logout', login_path, :confirm => 'Are you sure to logout?', :method => :delete
             - else
               = form_for :login, method: 'post', url: login_path, html: { class: ['navbar-form', 'navbar-right'], role: 'form'} do |t|
