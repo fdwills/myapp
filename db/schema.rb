@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211070837) do
+ActiveRecord::Schema.define(version: 20140214131949) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id",              default: 0
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20140211070837) do
     t.string   "title",                            null: false
     t.binary   "content",                          null: false
     t.integer  "state",      limit: 1, default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inforamtions", force: true do |t|
+    t.string   "title",      null: false
+    t.binary   "content",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,9 +45,9 @@ ActiveRecord::Schema.define(version: 20140211070837) do
     t.integer  "state",        limit: 1, default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "s_type",       limit: 1, default: 0, null: false
     t.string   "avatar"
     t.binary   "introduction"
+    t.integer  "s_type",       limit: 1, default: 0, null: false
   end
 
   create_table "users", force: true do |t|
@@ -50,6 +57,10 @@ ActiveRecord::Schema.define(version: 20140211070837) do
     t.string   "name",            null: false
     t.string   "email",           null: false
     t.string   "introduction"
+    t.string   "likes"
+    t.string   "pref"
+    t.string   "homepage"
+    t.datetime "birthday"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

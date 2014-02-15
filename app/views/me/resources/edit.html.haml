@@ -1,6 +1,6 @@
 - if @resource.errors.any?
   = render partial: 'alert_error', locals: { model: @resource }
-= form_for :resource, method: 'put', url: user_resource_path(current_user, @resource), html: { class: 'form-horizontal', role: 'form' } do |t|
+= form_for :resource, method: 'put', url: me_user_resource_path(current_user, @resource), html: { class: 'form-horizontal', role: 'form' } do |t|
   %h2 Update resource
   = render partial: 'form', locals: { t: t}
   .form-group

@@ -11,11 +11,11 @@
 
 %center
   - if @resource.prev
-    = link_to "< Prev", @resource.prev
+    = link_to "< Prev", visitor_resource_path(@resource.prev)
   - if @resource.next
-    = link_to "Next >", @resource.next
+    = link_to "Next >", visitor_resource_path(@resource.next)
 
-- if author?
-  = link_to 'Edit', edit_user_resource_path(current_user, @resource)
+- if login? && (current_user.id == @resource.user_id)
+  = link_to 'Edit', edit_me_user_resource_path(current_user, @resource)
   \|
 = link_to_function "Back", "history.back()"

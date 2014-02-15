@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Me::UsersController < MeController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :home]
 
   def home
@@ -74,6 +74,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction, :birthday, :homepage, :pref, :likes)
     end
 end
