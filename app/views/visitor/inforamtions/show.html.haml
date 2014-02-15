@@ -3,6 +3,6 @@
     %td.success
       %h3= @information.title.html_safe
   %tr
-    %td= @information.content.html_safe
+    %td= simple_format @information.content
 
 = link_to_function "Back", "history.back()"

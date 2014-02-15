@@ -12,10 +12,10 @@
           %h1 This is an blog example.
           %p
             Number of images is not limited. Your can view more examples from
-            = link_to 'here', '/users/1/home'
+            = link_to 'here', '/visitor/users/1/home'
             ,join us NOW!
           %p
-            %a.btn.btn-lg.btn-primary{:href => "/users/new", :role => "button"} Sign up today
+            %a.btn.btn-lg.btn-primary{:href => "/me/users/new", :role => "button"} Sign up today
     .item.active
       %img{:alt => "Second slide", "data-src" => "holder.js/900x500/auto/#666:#6a6a6a/text:Second slide", :src => "/assets/images/DSC00134.JPG"}/
       .container
@@ -23,7 +23,7 @@
           %h1 Blom is a web site of blogs.
           %p We drive your blogs like an album. Your can upload your pictures with title and introduction. We generate an album's like view for your blog to public automatic.
           %p
-            %a.btn.btn-lg.btn-primary{:href => "#", :role => "button"} Learn more
+            %a.btn.btn-lg.btn-primary{:href => "/visitor/about", :role => "button"} Learn more
     .item
       %img{:alt => "Third slide", "data-src" => "holder.js/900x500/auto/#555:#5a5a5a/text:Third slide", :src => "/assets/images/IMGP4775.JPG"}/
       .container
@@ -31,7 +31,7 @@
           %h1 One more for good measure.
           %p 
           %p
-            %a.btn.btn-lg.btn-primary{:href => "/visitors", :role => "button"} Browse gallery
+            %a.btn.btn-lg.btn-primary{:href => "/visitor/resources", :role => "button"} Browse gallery
   %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
     %span.glyphicon.glyphicon-chevron-left
   %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}

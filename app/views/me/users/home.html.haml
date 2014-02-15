@@ -9,7 +9,7 @@
             %h1
               = resource.title.html_safe
             %p
-              = resource.introduction.html_safe
+              = simple_format resource.introduction
             %p
               -#%a.btn.btn-lg.btn-primary{:href => "#", :role => "button"} Sign up today
   %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}

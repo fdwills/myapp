@@ -7,7 +7,7 @@
   %tr
     %td.info introduction
   %tr
-    %td= @resource.introduction.html_safe
+    %td= simple_format @resource.introduction
 
 %center
   - if @resource.prev
