@@ -10,7 +10,7 @@
   - @informations.try(:each) do |infor|
     %tr
       %td= infor.title
-      %td= cut_short(infor.content).html_safe
+      %td= cut_short(infor.content.html_safe)
       %td= infor.created_at.to_s(:db)
       %td= link_to 'view', admin_inforamtion_path(infor)
       %td= link_to 'edit', edit_admin_inforamtion_path(infor)

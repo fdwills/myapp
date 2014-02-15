@@ -14,7 +14,7 @@
       %td= resource.title
       %td= show_resource_state(resource.state)
       -#%td= resource.s_type
-      %td= cut_short(resource.introduction).html_safe
+      %td= cut_short(resource.introduction.html_safe)
       %td= resource.updated_at.to_s(:db)
       %td= link_to 'view', me_user_resource_path(current_user, resource)
       %td= link_to 'edit', edit_me_user_resource_path(current_user, resource)
