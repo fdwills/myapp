@@ -1,17 +1,20 @@
-%h1 Listing inforamtions
-
-%table
-  %tr
+%h1 Information List
+%table.table.table-condensed
+  %tr.info
+    %th title
+    %th content
+    %th updated_at
     %th
     %th
     %th
-
-  - @inforamtions.each do |inforamtion|
+  - @informations.try(:each) do |infor|
     %tr
-      %td= link_to 'Show', inforamtion
-      %td= link_to 'Edit', edit_inforamtion_path(inforamtion)
-      %td= link_to 'Destroy', inforamtion, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= infor.title
+      %td= cut_short(infor.content).html_safe
+      %td= infor.created_at.to_s(:db)
+      %td= link_to 'view', admin_inforamtion_path(infor)
+      %td= link_to 'edit', edit_admin_inforamtion_path(infor)
+      %td= link_to 'delete', admin_inforamtion_path(infor), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Inforamtion', new_inforamtion_path
+.pull-right
+  = link_to 'New Information', new_admin_inforamtion_path, class: ['btn', 'btn-primary']

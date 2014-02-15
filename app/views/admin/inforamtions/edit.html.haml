@@ -1,7 +1,8 @@
-%h1 Editing inforamtion
-
-= render 'form'
-
-= link_to 'Show', @inforamtion
-\|
-= link_to 'Back', inforamtions_path
+- if @information.errors.any?
+  = render partial: 'alert_error', locals: { model: @information }
+= form_for :information, method: 'put', url: admin_inforamtion_path(@information), html: { class: 'form-horizontal', role: 'form' } do |t|
+  %h2 Update information
+  = render partial: 'form', locals: { t: t}
+  .form-group
+    %br
+    %center= t.submit 'Update', class: ['btn', 'btn-md', 'btn-primary']

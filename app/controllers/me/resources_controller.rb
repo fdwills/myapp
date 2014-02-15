@@ -28,7 +28,7 @@ class Me::ResourcesController < MeController
     @resource.user_id = current_user.id
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
+        format.html { redirect_to me_user_resource_path(current_user, @resource), notice: 'Resource was successfully created.' }
         format.json { render action: 'show', status: :created, location: @resource }
       else
         format.html { render action: 'new' }

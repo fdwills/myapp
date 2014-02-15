@@ -1,0 +1,12 @@
+%h1 Information List
+%table.table.table-condensed
+  %tr.info
+    %th title
+    %th content
+    %th updated_at
+  - @informations.try(:each) do |infor|
+    %tr
+      %td= infor.title
+      %td= cut_short(infor.content).html_safe
+      %td= infor.created_at.to_s(:db)
+

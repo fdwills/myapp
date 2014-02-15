@@ -1,6 +1,7 @@
 Myapp::Application.routes.draw do
 
   namespace :visitor do
+    get :about
     resources :users, only: [:show] do
       member do
         get :home
@@ -9,6 +10,7 @@ Myapp::Application.routes.draw do
     resources :resources, only: [:index, :show]
     resources :comments, only: [:index, :show]
     resources :posts, only: [:index, :show]
+    resources :inforamtions, only: [:index, :show]
   end
 
   namespace :me do

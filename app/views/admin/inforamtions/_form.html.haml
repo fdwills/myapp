@@ -1,7 +1,10 @@
-= simple_form_for(@inforamtion) do |f|
-  = f.error_notification
-
-  .form-inputs
-
-  .form-actions
-    = f.button :submit
+.form-group
+  = t.label :title, 'Title', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :title, { class: 'form-control', placeholder: 'title'}
+    %p.help-block Input title within 255 characters.
+.form-group
+  = t.label :content, 'Content', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_area :content, { class: 'form-control', placeholder: 'content', columns: 5}
+    %p.help-block Introduction will also be shown on pictures under title.

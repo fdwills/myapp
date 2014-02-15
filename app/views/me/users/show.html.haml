@@ -13,9 +13,6 @@
         %br
         %br
         %p.help-block Upload or edit your resources (pictures).
-    -#%tr
-      %th Comments
-      %td= link_to 'Comments', user_comments_path(current_user), class: ['btn', 'btn-sm', 'btn-primary']
     %tr
       %td Album preview
       %td
@@ -23,6 +20,10 @@
         %br
         %br
         %p.help-block Preview your album.
+    - if admin?
+      %tr
+        %th Informations
+        %td= link_to 'information', admin_inforamtions_path, class: ['col-sm-4','btn', 'btn-sm', 'btn-primary']
 
   .alert.alert-success
     .glyphicon.glyphicon-user

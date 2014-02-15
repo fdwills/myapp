@@ -7,11 +7,16 @@ class ApplicationController < ActionController::Base
   helper_method :login?
   helper_method :author?
   helper_method :admin?
+  helper_method :lastest_update
 
   def current_user
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
     end
+  end
+
+  def lastest_update
+    Inforamtion.recent.page(params[:page]).per(10)
   end
 
   def login?
