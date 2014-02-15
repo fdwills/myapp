@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
             length: { maximum: 64 },
             format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
-  validates :age,
-            numericality: true,
-            inclusion: { :in => 0..120 }
-
   validates :likes,
             length: { maximum: 255}
 

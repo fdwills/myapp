@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :login?
   helper_method :author?
+  helper_method :admin?
+
   def current_user
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
@@ -16,17 +18,30 @@ class ApplicationController < ActionController::Base
     return current_user != nil
   end
 
-  def author?
-    if login? && @resource.present?
-      return current_user.id == @resource.user_id
+  def admin?
+    if login?
+      return current_user.id == 1
     else
       false
     end
   end
 
-  def writeable?
-    unless login?
-      return redirect_to login_path, notice: 'To do that, you need to login!'
+
+  def render_not_permit
+    render template: "errors/not_permit", status: 500, layout: 'signin', content_type: 'text/html'
+  end
+
+  unless Rails.env.development?
+    rescue_from Exception, with: :render_500
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+    rescue_from ActionController::RoutingError, with: :render_404
+
+    def render_404
+      render template: "errors/error_404", status: 404, layout: 'signin', content_type: 'text/html'
+    end
+
+    def render_500
+      render template: "errors/error_500", status:  500, layout: 'singin'
     end
   end
 end

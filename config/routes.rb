@@ -1,24 +1,27 @@
 Myapp::Application.routes.draw do
-  resources :inforamtions
 
-  resources :resources, only: [:index, :show]
+  namespace :visitor do
+    resources :resources, only: [:index, :show]
+    resources :comments, only: [:index, :show]
+    resources :posts, only: [:index, :show]
+  end
 
-  resources :comments, only: [:index, :show]
-
-  resources :posts, only: [:index, :show]
-
-  resources :users do
-    resources :posts
-    resources :comments
-    resources :resources
-    member do
-      get :home
+  namespace :me do
+    resources :users do
+      resources :posts
+      resources :comments
+      resources :resources
+      member do
+        get :home
+      end
     end
+  end
+
+  namespace :admin do
+    resources :inforamtions
   end
 
   resource :login
 
-  resources :visitors, only: [:index]
-
-  root :to => 'visitors#top'
+  root :to => 'visitor#top'
 end
