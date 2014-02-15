@@ -4,7 +4,7 @@ class Admin::InforamtionsController < AdminController
   # GET /inforamtions
   # GET /inforamtions.json
   def index
-    @inforamtions = Inforamtion.all
+    @informations = Inforamtion.recent
   end
 
   # GET /inforamtions/1
@@ -14,7 +14,7 @@ class Admin::InforamtionsController < AdminController
 
   # GET /inforamtions/new
   def new
-    @inforamtion = Inforamtion.new
+    @information = Inforamtion.new
   end
 
   # GET /inforamtions/1/edit
@@ -24,15 +24,13 @@ class Admin::InforamtionsController < AdminController
   # POST /inforamtions
   # POST /inforamtions.json
   def create
-    @inforamtion = Inforamtion.new(inforamtion_params)
+    @information = Inforamtion.new(inforamtion_params)
 
     respond_to do |format|
-      if @inforamtion.save
-        format.html { redirect_to @inforamtion, notice: 'Inforamtion was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @inforamtion }
+      if @information.save
+        format.html { redirect_to admin_inforamtion_path(@information), notice: 'Inforamtion was successfully created.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @inforamtion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +39,10 @@ class Admin::InforamtionsController < AdminController
   # PATCH/PUT /inforamtions/1.json
   def update
     respond_to do |format|
-      if @inforamtion.update(inforamtion_params)
-        format.html { redirect_to @inforamtion, notice: 'Inforamtion was successfully updated.' }
-        format.json { head :no_content }
+      if @information.update(inforamtion_params)
+        format.html { redirect_to admin_inforamtion_path(@information), notice: 'Inforamtion was successfully updated.' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @inforamtion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,9 +50,9 @@ class Admin::InforamtionsController < AdminController
   # DELETE /inforamtions/1
   # DELETE /inforamtions/1.json
   def destroy
-    @inforamtion.destroy
+    @information.destroy
     respond_to do |format|
-      format.html { redirect_to inforamtions_url }
+      format.html { redirect_to admin_inforamtions_path }
       format.json { head :no_content }
     end
   end
@@ -64,11 +60,11 @@ class Admin::InforamtionsController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_inforamtion
-      @inforamtion = Inforamtion.find(params[:id])
+      @information = Inforamtion.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inforamtion_params
-      params[:inforamtion]
+      params.require(:information).permit(:title, :content)
     end
 end

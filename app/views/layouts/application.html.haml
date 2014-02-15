@@ -31,22 +31,10 @@
               I start the project from 2014.01 for fun. Try to make album more easier and give my alnum a
               %em new life.
           .sidebar-module
-            %h4 Archives
+            %h4 Latest Update
             %ol.list-unstyled
-              %li
-                %a{:href => "#"} January 2014
-              %li
-                %a{:href => "#"} December 2013
-              %li
-                %a{:href => "#"} November 2013
-              %li
-                %a{:href => "#"} October 2013
-              %li
-                %a{:href => "#"} September 2013
-              %li
-                %a{:href => "#"} August 2013
-              %li
-                %a{:href => "#"} July 2013
+            - lastest_update.try(:each) do |update|
+              %li= link_to "#{update.created_at.to_s(:db)}", visitor_inforamtion_path(update)
           .sidebar-module
             %h4 Elsewhere
             %ol.list-unstyled

@@ -5,6 +5,11 @@ class VisitorController < ApplicationController
     render :layout => 'top'
   end
 
+  def about
+    @informations = Inforamtion.recent
+    render :layout => 'signin'
+  end
+
   def writable?
     unless login?
       render_not_permit
