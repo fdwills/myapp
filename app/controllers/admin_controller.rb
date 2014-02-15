@@ -8,7 +8,7 @@ class AdminController < ApplicationController
     end
   end
 
-  def writeable?
+  def writable?
     unless admin?
       render_not_permit
     end

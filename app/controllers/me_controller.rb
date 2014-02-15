@@ -3,19 +3,20 @@ class MeController < ApplicationController
   before_action :writable?, only: [:new, :edit, :update, :create, :destroy]
 
   def readable?
-    unless login? && current_user.id == user.id
-      render_not_permit
+    if controller_name.to_sym == :users
+      unless (action_name.to_sym == :new || action_name.to_sym == :create)
+        unless login? && current_user.readable?(params[:id].to_i)
+          render_not_permit
+        end
+      end
+    else
+      unless login? && current_user.readable?(params[:user_id].to_i)
+        render_not_permit
+      end
     end
   end
 
-  def writeable?
-    unless login? && current_user.id == user.id
-      render_not_permit
-    end
-  end
-
-  def user
-    return @user if @user.present?
-    @user = Users.find params[:user_id]
+  def writable?
+    readable?
   end
 end

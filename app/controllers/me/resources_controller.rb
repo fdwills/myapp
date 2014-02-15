@@ -1,4 +1,4 @@
-class ResourcesController < ApplicationController
+class Me::ResourcesController < MeController
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
   # GET /resources
@@ -42,7 +42,9 @@ class ResourcesController < ApplicationController
   def update
     respond_to do |format|
       if @resource.update(resource_params)
-        format.html { redirect_to @resource, notice: 'Resource was successfully updated.' }
+        format.html do
+          redirect_to me_user_resource_path(current_user, @resource), notice: 'Resource was successfully updated.'
+        end
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +58,7 @@ class ResourcesController < ApplicationController
   def destroy
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to user_resources_path(current_user) }
+      format.html { redirect_to me_user_resources_path(current_user), notice: 'Resource was successfully deleted.' }
       format.json { head :no_content }
     end
   end

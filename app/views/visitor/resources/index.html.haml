@@ -1,0 +1,14 @@
+%h3 Recent Upload
+%table.table.table-condensed
+  %tr.info
+    %th title
+    %th description
+    %th author
+    %th created at
+  - @resources.try(:each) do |resource|
+    %tr
+      %td= link_to resource.title,visitor_resource_path(resource)
+      %td= cut_short(resource.introduction, 15).html_safe
+      %td= link_to resource.user.name, home_me_user_path(resource.user)
+      %td= resource.created_at.to_s(:db)
+%center= paginate @resources

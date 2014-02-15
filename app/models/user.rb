@@ -23,4 +23,12 @@ class User < ActiveRecord::Base
 
   validates :homepage,
             length: { maximum: 255}
+
+  def readable?(user_id = nil)
+    self.id == user_id
+  end
+
+  def writable?(user_id = nil)
+    self.id == user_id
+  end
 end

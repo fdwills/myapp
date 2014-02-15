@@ -5,7 +5,7 @@ class VisitorController < ApplicationController
     render :layout => 'top'
   end
 
-  def writeable?
+  def writable?
     unless login?
       render_not_permit
     end

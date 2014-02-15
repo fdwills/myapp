@@ -1,7 +1,7 @@
 %table.table.table-condensed
   %tr{align: "center"}
     %td.success
-      %h3= @resource.title.html_safe
+      %h3= "#{@resource.title.html_safe}(#{show_resource_state(@resource.state)})"
   %tr
     %td= image_tag(@resource.avatar_url) if @resource.avatar?
   %tr
@@ -10,12 +10,11 @@
     %td= @resource.introduction.html_safe
 
 %center
-  - if @resource.prev
-    = link_to "< Prev", @resource.prev
-  - if @resource.next
-    = link_to "Next >", @resource.next
+  - if @resource.prev(:me)
+    = link_to "< Prev", me_user_resource_path(current_user, @resource.prev(:me))
+  - if @resource.next(:me)
+    = link_to "Next >", me_user_resource_path(current_user, @resource.next(:me))
 
-- if author?
-  = link_to 'Edit', edit_user_resource_path(current_user, @resource)
-  \|
+= link_to 'Edit', edit_me_user_resource_path(current_user, @resource)
+\|
 = link_to_function "Back", "history.back()"

@@ -9,7 +9,7 @@
     %tr
       %td Resources
       %td
-        = link_to 'Resources', user_resources_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
+        = link_to 'Resources', me_user_resources_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
         %br
         %br
         %p.help-block Upload or edit your resources (pictures).
@@ -19,7 +19,7 @@
     %tr
       %td Album preview
       %td
-        = link_to 'preview', home_user_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
+        = link_to 'preview', home_me_user_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
         %br
         %br
         %p.help-block Preview your album.
@@ -29,7 +29,7 @@
     Update Personal Informaion
   - if @user.errors.any?
     = render partial: 'alert_error', locals: { model: @user }
-  = form_for current_user, as: :user, method: :put, url: user_path(current_user), html: { class: ['form-horizontal'], role: 'form'} do |t|
+  = form_for current_user, as: :user, method: :put, url: me_user_path(current_user), html: { class: ['form-horizontal'], role: 'form'} do |t|
     .form-group
       = t.label :name, 'Nickname', class: ['col-sm-3', 'control-label']
       .col-sm-8

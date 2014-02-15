@@ -1,4 +1,4 @@
-class InforamtionsController < ApplicationController
+class Admin::InforamtionsController < AdminController
   before_action :set_inforamtion, only: [:show, :edit, :update, :destroy]
 
   # GET /inforamtions
