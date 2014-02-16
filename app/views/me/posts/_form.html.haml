@@ -1,9 +1,21 @@
-= simple_form_for(@post) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.text_field :title
-  .form-inputs
-    = f.text_area :content
-  .form-actions
-    = f.button :submit
+.form-group
+  = t.label :title, 'Title', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :title, { value: utf8(@post.title),  class: 'form-control', placeholder: 'Title'}
+    %p.help-block Input title within 255 characters.
+.form-group
+  = t.label :state, 'State', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.select :state, [["release", "0"], ["draft", "1"]], {}, { class: 'form-control', placeholder: 'state'}
+    %p.help-block With release option, picture will be shown in album. Post with Draft option is for edit, is not open by others.
+.form-group
+  = t.label :content, 'content', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_area :content, { value: utf8(@post.content), class: 'form-control', placeholder: 'introduction', columns: 5}
+    %p.help-block Just for description.
+-#.form-group
+  = t.label :avatar, 'upload', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.file_field :avatar
+    %p.help-block Select and updoad your pictures with format jpg, jpeg, gif or png.
+    =t.hidden_field :avatar_cache

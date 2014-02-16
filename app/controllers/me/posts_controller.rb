@@ -1,12 +1,17 @@
 class Me::PostsController < MeController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :view, :add]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = current_user.posts.recent.page(params[:page]).per(10)
   end
 
+  # view album
+  def view
+    @resources = @post.resources.released
+    render :layout => 'home'
+  end
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -21,15 +26,24 @@ class Me::PostsController < MeController
   def edit
   end
 
+  def add
+    post_resource = PostResource.new(post_id: @post.id, resource_id: params[:resource_id])
+
+    if post_resource.save
+      redirect_to me_user_post_path(current_user, @post), notice: 'Post was successfully created.'
+    else
+      render :show
+    end
+  end
+
   # POST /posts
   # POST /posts.json
   def create
-    new_params = post_params.merge(user_id: current_user.id)
-    @post = Post.new(new_params)
-
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to me_user_post_path(current_user, @post), notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         format.html { render action: 'new' }
@@ -43,7 +57,9 @@ class Me::PostsController < MeController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html do
+          redirect_to me_user_post_path(current_user, @post), notice: 'Post was successfully updated.'
+        end
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,7 +73,7 @@ class Me::PostsController < MeController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to me_user_posts_path(current_user), notice: 'Post was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +86,7 @@ class Me::PostsController < MeController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :state, :content)
     end
+
 end
