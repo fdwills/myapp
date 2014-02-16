@@ -10,6 +10,11 @@ class Resource < ActiveRecord::Base
   scope :released, -> { where(state: ST_RELEASED) }
 
   belongs_to :user
+  has_many :post_resources, dependent: :destroy
   validates :title, length: { maximum: 255 }
   validates_inclusion_of :state, :in => [ST_RELEASED, ST_DRAFT]
+
+  def safe_title
+    self.title.empty? ? '(not title)' : self.title
+  end
 end

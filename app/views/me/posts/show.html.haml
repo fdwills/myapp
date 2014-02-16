@@ -1,14 +1,50 @@
-%p#notice= notice
-
-%table.table
+%table.table.table-condensed
   %tr
-    %th 标题
-    %td= @post.title
+    %th title
+    %td= utf8_html(@post.title)
   %tr
-    %th 正文
-    %td= @post.content
+    %th state
+    %td= show_resource_state(@post.state)
+  %tr
+    %th description
+    %td= simple_format utf8(@post.content)
+  %tr
+    %th current images
+    %td
+      %table.table.table-condensed
+        %tr
+          %th title
+          %th created at
+          %td
+        - @post.post_resources.try(:each) do |post_resource|
+          %tr
+            %td= link_to utf8_html(post_resource.resource.safe_title), me_user_resource_path(current_user, post_resource.resource)
+            %td= post_resource.created_at.to_s(:db)
+            %td= link_to 'delete', me_user_post_resource_path(current_user, post_resource), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %tr
+          = form_for :post_resource, method: 'post', url: me_user_post_resources_path, html: { class: 'form-horizontal', role: 'form' } do |t|
+            %td{colspan: 2}= t.select :resource_id, current_user.resources.map{|resource| [utf8_html(resource.safe_title), resource.id]},{}, { class: 'form-control' }
+            = t.hidden_field :post_id, value: @post.id
+            %td= t.submit 'add', class: ['btn', 'btn-sm', 'btn-primary']
 
+  %tr
+    %th view post
+    %td= link_to "view", view_me_user_post_path(current_user, @post), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
+  %tr
+    %th link for open
+    %td
+      - if @post.released?
+        = link_to URI.join(root_url, view_visitor_post_path(@post)), view_visitor_post_path(@post)
+      - else
+        %p not released
+      %p.help-block copy the link above to share with friends(must be released).
 
-= link_to '编辑', edit_user_post_path(current_user, @post)
+%center
+  - if @post.prev(:me)
+    = link_to "< Prev", me_user_post_path(current_user, @post.prev(:me)), class: ['btn','btn-sm', 'btn-warning']
+  - if @post.next(:me)
+    = link_to "Next >", me_user_post_path(current_user, @post.next(:me)), class: ['btn', 'btn-sm', 'btn-info']
+
+= link_to 'Edit', edit_me_user_post_path(current_user, @post)
 \|
-= link_to '返回', user_posts_path(current_user)
+= link_to_function "Back", "history.back()"

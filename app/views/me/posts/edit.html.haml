@@ -1,7 +1,8 @@
-%h1 Editing post
-
-= render 'form'
-
-= link_to 'Show', @post
-\|
-= link_to 'Back', posts_path
+- if @post.errors.any?
+  = render partial: 'alert_error', locals: { model: @post }
+= form_for :post, method: 'put', url: me_user_post_path(current_user, @post), html: { class: 'form-horizontal', role: 'form' } do |t|
+  %h2 Update post
+  = render partial: 'form', locals: { t: t}
+  .form-group
+    %br
+    %center= t.submit 'Update', class: ['btn', 'btn-md', 'btn-primary']

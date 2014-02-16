@@ -1,5 +1,9 @@
-%h1 New post
+- if @post.errors.any?
+  = render partial: 'alert_error', locals: { model: @post }
+= form_for :post, method: 'post', url: me_user_posts_path, html: { class: 'form-horizontal', role: 'form' } do |t|
+  %h2 Create new post
+  = render partial: 'form', locals: { t: t}
+  .form-group
+    .col-sm-offset-3
+      = t.submit 'Submit!', class: ['btn', 'btn-md', 'btn-primary']
 
-= render 'form'
-
-= link_to 'Back', posts_path
