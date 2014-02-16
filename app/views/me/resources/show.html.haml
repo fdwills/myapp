@@ -1,9 +1,9 @@
 %table.table.table-condensed
   %tr{align: "center"}
     %td.success
-      %h3= "#{utf8_html(@resource.title)}(#{show_resource_state(@resource.state)})"
+      %h3= "#{utf8_html(@resource.title.empty? ? '(not title)' : @resource.title)}(#{show_resource_state(@resource.state)})"
   %tr
-    %td= image_tag(@resource.avatar_url) if @resource.avatar?
+    %td= @resource.avatar? ? image_tag(@resource.avatar_url) : image_tag("no.jpg")
   %tr
     %td.info introduction
   %tr
@@ -11,9 +11,9 @@
 
 %center
   - if @resource.prev(:me)
-    = link_to "< Prev", me_user_resource_path(current_user, @resource.prev(:me))
+    = link_to "< Prev", me_user_resource_path(current_user, @resource.prev(:me)), class: ['btn','btn-sm', 'btn-warning']
   - if @resource.next(:me)
-    = link_to "Next >", me_user_resource_path(current_user, @resource.next(:me))
+    = link_to "Next >", me_user_resource_path(current_user, @resource.next(:me)), class: ['btn', 'btn-sm', 'btn-info']
 
 = link_to 'Edit', edit_me_user_resource_path(current_user, @resource)
 \|

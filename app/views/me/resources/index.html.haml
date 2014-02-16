@@ -11,7 +11,7 @@
     %th
   - @resources.try(:each) do |resource|
     %tr
-      %td= utf8_html(resource.title)
+      %td= utf8_html(resource.title.empty? ? '(not title)' : resource.title)
       %td= show_resource_state(resource.state)
       -#%td= resource.s_type
       %td= short_utf8_html(resource.introduction)

@@ -7,7 +7,7 @@
     %th created at
   - @resources.try(:each) do |resource|
     %tr
-      %td= link_to utf8_html(resource.title), visitor_resource_path(resource)
+      %td= link_to utf8_html(resource.title.empty? ? '(not title)' : resource.title), visitor_resource_path(resource)
       %td= short_utf8_html(resource.introduction, 16)
       %td= link_to resource.user.name, home_visitor_user_path(resource.user)
       %td= resource.created_at.to_s(:db)
