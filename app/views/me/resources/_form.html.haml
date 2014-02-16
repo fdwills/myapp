@@ -15,7 +15,7 @@
 .form-group
   = t.label :introduction, 'introduction', class: ['col-sm-3', 'control-label']
   .col-sm-8
-    = t.text_area :introduction, { value: utf8(@resource.title), class: 'form-control', placeholder: 'introduction', columns: 5}
+    = t.text_area :introduction, { value: utf8(@resource.introduction), class: 'form-control', placeholder: 'introduction', columns: 5}
     %p.help-block Introduction will also be shown on pictures under title.
 .form-group
   = t.label :avatar, 'upload', class: ['col-sm-3', 'control-label']
