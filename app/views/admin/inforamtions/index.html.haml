@@ -9,8 +9,8 @@
     %th
   - @informations.try(:each) do |infor|
     %tr
-      %td= infor.title
-      %td= cut_short(infor.content.html_safe)
+      %td= utf8_html(infor.title)
+      %td= short_utf8_html(infor.content)
       %td= infor.created_at.to_s(:db)
       %td= link_to 'view', admin_inforamtion_path(infor)
       %td= link_to 'edit', edit_admin_inforamtion_path(infor)

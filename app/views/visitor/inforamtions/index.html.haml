@@ -6,7 +6,7 @@
     %th updated_at
   - @informations.try(:each) do |infor|
     %tr
-      %td= infor.title
-      %td= cut_short(infor.content.html_safe)
+      %td= utf8(infor.title)
+      %td= short_utf8_html(infor.content)
       %td= infor.created_at.to_s(:db)
 

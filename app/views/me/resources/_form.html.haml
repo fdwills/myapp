@@ -1,7 +1,7 @@
 .form-group
   = t.label :title, 'Title', class: ['col-sm-3', 'control-label']
   .col-sm-8
-    = t.text_field :title, { class: 'form-control', placeholder: 'Nickname'}
+    = t.text_field :title, { value: utf8(@resource.title),  class: 'form-control', placeholder: 'Nickname'}
     %p.help-block Input title within 255 characters.
 .form-group
   = t.label :state, 'State', class: ['col-sm-3', 'control-label']
@@ -15,7 +15,7 @@
 .form-group
   = t.label :introduction, 'introduction', class: ['col-sm-3', 'control-label']
   .col-sm-8
-    = t.text_area :introduction, { class: 'form-control', placeholder: 'introduction', columns: 5}
+    = t.text_area :introduction, { value: utf8(@resource.title), class: 'form-control', placeholder: 'introduction', columns: 5}
     %p.help-block Introduction will also be shown on pictures under title.
 .form-group
   = t.label :avatar, 'upload', class: ['col-sm-3', 'control-label']

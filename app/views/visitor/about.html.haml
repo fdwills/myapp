@@ -23,6 +23,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 .alert.alert-success Update Log
 - @informations.try(:each) do |info|
   %hr
-  %p= "#{info.created_at.to_s(:db)} #{info.title}"
-  %p= simple_format info.content
+  %p= "#{info.created_at.to_s(:db)} #{utf8_html(info.title)}"
+  %p= simple_format utf8(info.content)
 

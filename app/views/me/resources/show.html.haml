@@ -1,13 +1,13 @@
 %table.table.table-condensed
   %tr{align: "center"}
     %td.success
-      %h3= "#{@resource.title.html_safe}(#{show_resource_state(@resource.state)})"
+      %h3= "#{utf8_html(@resource.title)}(#{show_resource_state(@resource.state)})"
   %tr
     %td= image_tag(@resource.avatar_url) if @resource.avatar?
   %tr
     %td.info introduction
   %tr
-    %td= simple_format @resource.introduction
+    %td= simple_format utf8(@resource.introduction)
 
 %center
   - if @resource.prev(:me)
