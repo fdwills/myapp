@@ -34,12 +34,7 @@
             %ol.list-unstyled
             - lastest_update.try(:each) do |update|
               %li= link_to "#{update.created_at.to_s(:db)}", visitor_inforamtion_path(update)
-          .sidebar-module
-            %h4 Elsewhere
-            %ol.list-unstyled
-              %li= link_to 'GitHub', 'https://github.com/fdwills/myapp'
-              %li= link_to 'blog', 'http://fdwills.com'
-              %li= link_to 'Facebook', 'https://www.facebook.com/wei.renzhong.1'
+          = render 'layouts/ads_side'
     = render 'layouts/ads2'
     = render 'layouts/footer'
 = debug(params) if Rails.env.development?
