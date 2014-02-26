@@ -36,6 +36,13 @@
     = render partial: 'alert_error', locals: { model: @user }
   = form_for current_user, as: :user, method: :put, url: me_user_path(current_user), html: { class: ['form-horizontal'], role: 'form'} do |t|
     .form-group
+      .col-sm-3.control-label
+        = @user.icon? ? image_tag(@user.icon_url) : image_tag("Default.png")
+      .col-sm-8
+        = t.file_field :icon
+        %p.help-block Select and updoad your pictures with format jpg, jpegor png.
+        = t.hidden_field :icon_cache
+    .form-group
       = t.label :name, 'Nickname', class: ['col-sm-3', 'control-label']
       .col-sm-8
         = t.text_field :name, { class: 'form-control', placeholder: 'Nickname'}

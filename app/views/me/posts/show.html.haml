@@ -22,7 +22,7 @@
             %td= post_resource.created_at.to_s(:db)
             %td= link_to 'delete', me_user_post_resource_path(current_user, post_resource), :method => :delete, :data => { :confirm => 'Are you sure?' }
         %tr
-          = form_for :post_resource, method: 'post', url: me_user_post_resources_path, html: { class: 'form-horizontal', role: 'form' } do |t|
+          = form_for :post_resource, method: 'post', url: me_user_post_resources_path(current_user), html: { class: 'form-horizontal', role: 'form' } do |t|
             %td{colspan: 2}= t.select :resource_id, current_user.resources.map{|resource| [utf8_html(resource.safe_title), resource.id]},{}, { class: 'form-control' }
             = t.hidden_field :post_id, value: @post.id
             %td= t.submit 'add', class: ['btn', 'btn-sm', 'btn-primary']

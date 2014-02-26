@@ -1,0 +1,16 @@
+%h3 Recent Upload
+%table.table.table-condensed
+  %tr.info
+  - @posts.try(:each) do |post|
+    %tr
+      %td{rowspan: "3"}
+        = link_to (post.user.icon? ? image_tag(post.user.icon_url) : image_tag("Default.png")), visitor_user_path(post.user)
+      %td
+        #{post.user.name} open a new post at
+        %p= post.created_at.to_s(:db)
+    %tr
+      %td{bgcolor: "#58acfa"}
+        %p= link_to post.resources.present? ? image_tag(post.resources.first.avatar.url(:cover)) : nil, view_visitor_post_path(post)
+        %p= short_utf8_html(post.title.empty? ? '(not title)' : post.title, 16)
+        %p= utf8_html(post.content)
+%center= paginate @posts
