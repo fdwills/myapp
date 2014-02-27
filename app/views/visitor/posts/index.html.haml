@@ -1,16 +1,14 @@
 %h3 Recent Upload
-%table.table.table-condensed
-  %tr.info
-  - @posts.try(:each) do |post|
-    %tr
-      %td{rowspan: "2"}
-        = link_to (post.user.icon? ? image_tag(post.user.icon_url) : image_tag("Default.png")), visitor_user_path(post.user)
-      %td
-        #{post.user.name} open a new post at
-        %p= post.created_at.to_s(:db)
-    %tr
-      %td{bgcolor: "#58acfa"}
-        %p= link_to post.resources.present? ? image_tag(post.resources.first.avatar.url(:cover)) : nil, view_visitor_post_path(post)
-        %p= short_utf8_html(post.title.empty? ? '(not title)' : post.title, 16)
-        %p= utf8_html(post.content)
+- @posts.try(:each) do |post|
+  .panel.panel-default.panel-primary
+    .panel-heading
+    %table.table.table-condensed
+      %tr
+        %td.col-sm-2
+          = link_to (post.user.icon? ? image_tag(post.user.icon_url) : image_tag("Default.png")), visitor_user_path(post.user)
+        %td
+          #{post.user.name} open a new album "#{utf8_html(post.title)}" at #{post.created_at.to_s(:db)}
+      %tr
+        %td.col-sm-4= link_to post.resources.present? ? image_tag(post.resources.first.avatar.url(:cover)) : nil, view_visitor_post_path(post)
+        %td= utf8_html(post.content)
 %center= paginate @posts
