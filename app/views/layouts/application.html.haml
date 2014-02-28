@@ -4,6 +4,7 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title= content_for?(:title) ? yield(:title) : 'Myapp'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Myapp'}"}
+    %meta{:property =>"wb:webmaster", :content =>"f5cf72c43a5da8ca"}
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
@@ -11,6 +12,8 @@
     %link{:href => "/assets/stylesheets/carousel.css", :rel => "stylesheet"}
     %style#holderjs-style{:type => "text/css"}
   %body{:style => ""}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
     .container
       = render 'layouts/navigation'
       %br
