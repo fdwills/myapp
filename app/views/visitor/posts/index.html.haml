@@ -11,7 +11,9 @@
       %tr
         %td.col-sm-4
           = link_to post.resources.present? ? image_tag(post.resources.first.avatar.url(:cover)) : nil, view_visitor_post_path(post)
-          %div.pull-right.fb-share-button{data: { href: view_visitor_post_path(post), type: "button_count"}}
+          %div
+            %script{type: "IN/Share", data: {url: view_visitor_post_url(post), counter: "right"}}
+          %div.fb-share-button{data: { href: view_visitor_post_path(post), type: "button_count"}}
         %td
           = utf8_html(post.content)
 %center= paginate @posts
