@@ -4,10 +4,10 @@
     .panel-heading
     %table.table.table-condensed
       %tr
-        %td.col-sm-2
-          = link_to (post.user.icon? ? image_tag(post.user.icon_url) : image_tag("Default.png")), visitor_user_path(post.user)
-        %td
-          #{post.user.name} open a new album "#{utf8_html(post.title)}" at #{post.created_at.to_s(:db)}
+        %td.col-sm-2{rowspan: 2}
+          = post.user.icon? ? image_tag(post.user.icon_url) : image_tag("Default.png")
+          %h4
+            %center= link_to  post.user.name, visitor_user_path(post.user)
       %tr
         %td.col-sm-4
           = link_to post.resources.present? ? image_tag(post.resources.first.avatar.url(:cover)) : nil, view_visitor_post_path(post)
@@ -15,5 +15,6 @@
             %script{type: "IN/Share", data: {url: view_visitor_post_url(post), counter: "right"}}
           %div.fb-share-button{data: { href: view_visitor_post_path(post), type: "button_count"}}
         %td
+          %h4 "#{utf8_html(post.title)}"  #{post.created_at.to_s(:db)}
           = utf8_html(post.content)
 %center= paginate @posts

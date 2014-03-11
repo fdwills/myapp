@@ -9,7 +9,8 @@
       %img{:alt => "First slide", "data-src" => "holder.js/900x500/auto/#777:#7a7a7a/text:First slide", :src => "/assets/images/DSC00115.JPG"}
       .container
         .carousel-caption
-          %h1 This is an blog example.
+          - unless mobile_user_agent?
+            %h1 This is an blog example.
           %p
             Number of images is not limited. Your can view more examples from
             = link_to 'here', '/visitor/users/1/home'
@@ -20,7 +21,8 @@
       %img{:alt => "Second slide", "data-src" => "holder.js/900x500/auto/#666:#6a6a6a/text:Second slide", :src => "/assets/images/DSC00134.JPG"}/
       .container
         .carousel-caption
-          %h1 Blom is a web site of blogs.
+          - unless mobile_user_agent?
+            %h1 Blom is a web site of blogs.
           %p We drive your blogs like an album. Your can upload your pictures with title and introduction. We generate an album's like view for your blog to public automatic.
           %p
             %a.btn.btn-lg.btn-primary{:href => "/visitor/about", :role => "button"} Learn more
@@ -28,7 +30,8 @@
       %img{:alt => "Third slide", "data-src" => "holder.js/900x500/auto/#555:#5a5a5a/text:Third slide", :src => "/assets/images/IMGP4775.JPG"}/
       .container
         .carousel-caption
-          %h1 One more for good measure.
+          - unless mobile_user_agent?
+            %h1 One more for good measure.
           %p 
           %p
             %a.btn.btn-lg.btn-primary{:href => "/visitor/posts", :role => "button"} Browse gallery
