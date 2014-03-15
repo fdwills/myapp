@@ -26,26 +26,34 @@
       .blog-header
         %h1.blog-title Blom: An Image Blogger
         %p.lead.blog-description Drive your blog like an album.
-      .row
-        .col-sm-8.blog-main
-          %p#notice= notice
-          = yield
-        .col-sm-3.col-sm-offset-1.blog-sidebar
-          .sidebar-module.sidebar-module-inset
-            %h4 About
+      .col-sm-9.blog-main
+        %p#notice= notice
+        = yield
+      .col-sm-3.blog-sidebar
+        .sidebar-module.sidebar-module-inset
+          %h4{data: {toggle: "collapse", target: "#about"}}
+            About
+          %div.collapse.in#about
             %p
               I start the project from 2014.01 for fun. Try to make album more easier and give my alnum a
               %em new life.
-          .sidebar-module
-            %h4 Latest Update
-            %ol.list-unstyled
+              %p To use it:
+              %p 1. Create an account.
+              %p 2. Upload images and edit information.
+              %p 3. Create an post.
+              %p 4. Add the images to post and publish it.
+        .sidebar-module.sidebar-module-inset
+          %h4{data: {toggle: "collapse", target: "#info"}}
+            Latest Update
+          %ol.list-unstyled.collapse#info
             - lastest_update.try(:each) do |update|
               %li= link_to "#{update.created_at.to_s(:db)}", visitor_inforamtion_path(update)
-          .sidebar-module
-            %h4 Elsewhere
-            %ol.list-unstyled
-              %li= link_to 'GitHub', 'https://github.com/fdwills/myapp'
-              %li= link_to 'blog', 'http://fdwills.com'
-              %li= link_to 'Facebook', 'https://www.facebook.com/wei.renzhong.1'
+        .sidebar-module.sidebar-module-inset
+          %h4{data: {toggle: "collapse", target: "#link"}}
+            Elsewhere
+          %ol.list-unstyled.collapse#link
+            %li= link_to 'GitHub', 'https://github.com/fdwills/myapp'
+            %li= link_to 'blog', 'http://fdwills.com'
+            %li= link_to 'Facebook', 'https://www.facebook.com/wei.renzhong.1'
     = render 'layouts/footer'
 = debug(params) if Rails.env.development?

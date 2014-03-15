@@ -2,12 +2,13 @@
 - @posts.try(:each) do |post|
   .panel.panel-default.panel-primary
     .panel-heading
-    %table.table.table-condensed
+    %table.table
       %tr
         %td.col-sm-2{rowspan: 2}
           = post.user.icon? ? image_tag(post.user.icon_url) : image_tag("Default.png")
           %h4
             %center= link_to  post.user.name, visitor_user_path(post.user)
+            %center= post.user.introduction
       %tr
         %td.col-sm-4
           = link_to post.resources.present? ? image_tag(post.resources.first.avatar.url(:cover)) : nil, view_visitor_post_path(post)
