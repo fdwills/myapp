@@ -11,7 +11,7 @@ class LoginsController < ApplicationController
     user = User.find_by_email login_params[:email]
     if user && user.authenticate(login_params[:pass])
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to me_user_path(user)
     else
       flash.now.alert = "Email or password is not correct."
       render :new, :layout => 'signin'

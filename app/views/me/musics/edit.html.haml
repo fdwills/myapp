@@ -1,0 +1,8 @@
+- if @music.errors.any?
+  = render partial: 'alert_error', locals: { model: @music }
+= form_for :music, method: 'put', url: me_user_music_path(current_user, @music), html: { class: 'form-horizontal', role: 'form' } do |t|
+  %h2 Update music
+  = render partial: 'form', locals: { t: t}
+  .form-group
+    %br
+    %center= t.submit 'Update', class: ['btn', 'btn-md', 'btn-primary']

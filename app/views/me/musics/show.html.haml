@@ -1,0 +1,21 @@
+%table.table.table-condensed
+  %tr
+    %td.success
+      %h3 #{utf8_html(@music.title)}(#{show_resource_state(@music.state)})
+  %tr
+    %td
+      %audio{controls: "controls", loop: false}
+        %source{src: @music.source_url}
+      = link_to "Auto Loop", "#", class: ['btn', 'btn-sm', 'btn-warning', 'music-loop']
+  %tr
+    %td= simple_format utf8(@music.introduction)
+
+%center
+  - if @music.prev(:me)
+    = link_to "< Prev", me_user_music_path(current_user, @music.prev(:me)), class: ['btn','btn-sm', 'btn-warning']
+  - if @music.next(:me)
+    = link_to "Next >", me_user_music_path(current_user, @music.next(:me)), class: ['btn', 'btn-sm', 'btn-info']
+
+= link_to 'Edit', edit_me_user_music_path(current_user, @music)
+\|
+= link_to_function "Back", "history.back()"

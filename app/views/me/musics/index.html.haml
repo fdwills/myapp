@@ -1,0 +1,24 @@
+%h1 Your Music List
+%table.table.table-condensed
+  %tr.info
+    %th title
+    -#%th type
+    %th state
+    %th introduction
+    %th updated_at
+    %th
+    %th
+    %th
+  - @musics.try(:each) do |music|
+    %tr
+      %td= utf8_html(music.title.empty? ? '(not title)' : music.title)
+      %td= show_resource_state(music.state)
+      %td= short_utf8_html(music.introduction)
+      %td= music.updated_at.to_s(:db)
+      %td= link_to 'view', me_user_music_path(current_user, music)
+      %td= link_to 'edit', edit_me_user_music_path(current_user, music)
+      %td= link_to 'delete', me_user_music_path(current_user, music), :method => :delete, :data => { :confirm => 'Are you sure?' }
+%center= paginate @musics if @musics.present?
+
+.pull-right
+  = link_to 'New Music', new_me_user_music_path(current_user), class: ['btn', 'btn-primary']

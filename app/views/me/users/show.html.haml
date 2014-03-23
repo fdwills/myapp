@@ -18,12 +18,19 @@
         %br
         %p.help-block All your released pictures give an default album, Preview your default album.
     %tr
-      %th Posts
+      %td Posts
       %td
         = link_to 'Posts', me_user_posts_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
         %br
         %br
         %p.help-block A post is other albums except default album. You can add the same picture from gallery to different posts.
+    %tr
+      %td Music
+      %td
+        = link_to 'musics', me_user_musics_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
+        %br
+        %br
+        %p.help-block Upload or edit your musics.
     - if admin?
       %tr
         %th Informations

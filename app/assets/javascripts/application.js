@@ -15,3 +15,15 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+$(function() {
+  $(".music-loop").click(function() {
+    if ($("audio").attr("loop")) {
+      $("audio").attr("loop", false);
+      $(this).html("Auto Loop")
+    } else {
+      $("audio").attr("loop", true);
+      $(this).html("Cancel Loop")
+    }
+    return false
+  });
+});

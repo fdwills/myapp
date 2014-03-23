@@ -1,0 +1,22 @@
+.form-group
+  = t.label :title, 'Title', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :title, { value: utf8(@music.title),  class: 'form-control', placeholder: 'Nickname'}
+    %p.help-block Input title within 255 characters.
+.form-group
+  = t.label :state, 'State', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.select :state, [["release", "0"], ["draft", "1"]], {}, { class: 'form-control', placeholder: 'state'}
+    %p.help-block With release option, music will be shown in album. Music with Draft option is for edit, will not be shown until state is changed(released is not avalibale now because of copyright problem).
+.form-group
+  = t.label :introduction, 'introduction', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_area :introduction, { value: utf8(@music.introduction), class: 'form-control', placeholder: 'introduction', rows: 10}
+    %p.help-block Introduction will also be shown.
+.form-group
+  = t.label :source, 'upload', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.file_field :source
+    %p.help-block Select and updoad your music(mp3 only).
+    = t.hidden_field :source_cache
+-#= image_tag(@music.source_url) if @music.source?

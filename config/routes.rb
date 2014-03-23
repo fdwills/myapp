@@ -28,6 +28,7 @@ Myapp::Application.routes.draw do
       resources :post_resources, only: [:create, :destroy]
       resources :comments
       resources :resources
+      resources :musics
       member do
         get :home
       end

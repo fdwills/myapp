@@ -11,7 +11,7 @@
 .form-group
   = t.label :content, 'content', class: ['col-sm-3', 'control-label']
   .col-sm-8
-    = t.text_area :content, { value: utf8(@post.content), class: 'form-control', placeholder: 'introduction', columns: 5}
+    = t.text_area :content, { value: utf8(@post.content), class: 'form-control', placeholder: 'introduction', rows: 10}
     %p.help-block Just for description.
 -#.form-group
   = t.label :avatar, 'upload', class: ['col-sm-3', 'control-label']

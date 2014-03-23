@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227044459) do
+ActiveRecord::Schema.define(version: 20140324030959) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id",              default: 0
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20140227044459) do
   create_table "inforamtions", force: true do |t|
     t.string   "title",      null: false
     t.binary   "content",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "musics", force: true do |t|
+    t.integer  "user_id",                            null: false
+    t.string   "title",                              null: false
+    t.integer  "state",        limit: 1, default: 0, null: false
+    t.integer  "s_type",       limit: 1, default: 0, null: false
+    t.string   "source",                             null: false
+    t.binary   "introduction"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
