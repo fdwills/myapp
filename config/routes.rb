@@ -8,6 +8,8 @@ Myapp::Application.routes.draw do
       end
     end
     resources :resources, only: [:index, :show]
+    resources :musics, only: [:index, :show]
+    resources :blogs, only: [:index, :show]
     resources :comments, only: [:index, :show]
     resources :posts, only: [:index, :show] do
       member do
@@ -29,6 +31,7 @@ Myapp::Application.routes.draw do
       resources :comments
       resources :resources
       resources :musics
+      resources :blogs
       member do
         get :home
       end

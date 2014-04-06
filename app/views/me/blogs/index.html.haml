@@ -1,0 +1,19 @@
+%h1 Your Blog List
+%table.table.table-condensed
+  %tr.info
+    %th title
+    %th state
+    %th content
+    %th updated_at
+    %th
+  - @blogs.try(:each) do |blog|
+    %tr
+      %td= link_to utf8_html(blog.title), me_user_blog_path(current_user, blog)
+      %td= show_resource_state(blog.state)
+      %td= short_utf8_html(blog.content)
+      %td= blog.updated_at.to_s(:db)
+      %td= link_to 'delete', me_user_blog_path(current_user, blog), :method => :delete, :data => { :confirm => 'Are you sure?' }
+%center= paginate @blogs if @blogs.present?
+
+.pull-right
+  = link_to 'New Blog', new_me_user_blog_path(current_user), class: ['btn', 'btn-primary']

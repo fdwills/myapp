@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :resources
   has_many :musics
+  has_many :blogs
 
   validates :name,
             presence: true,

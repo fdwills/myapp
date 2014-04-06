@@ -9,24 +9,24 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to 'Blom', root_path, class: 'navbar-brand'
+          = link_to 'BIM', root_path, class: 'navbar-brand'
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
-            %li= link_to 'recent', visitor_posts_path, class: 'active'
-            %li= link_to 'about', visitor_about_path
-            %li= link_to 'contact', 'https://github.com/fdwills/'
+            %li= link_to 'Blog', visitor_blogs_path, class: 'active'
+            %li= link_to 'Image', visitor_posts_path
+            %li= link_to 'Music', visitor_musics_path
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                samples
+                others
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to 'wills\' album', '/visitor/users/1/home'
-                %li= link_to 'Action2', '#'
-                %li= link_to 'Action3', '#'
-                %li.divider
-                %li.dropdown-header 'Nav header'
-                %li= link_to 'Separated link1', '#'
-                %li= link_to 'Separated link1', '#'
+                %li= link_to 'about', visitor_about_path
+                %li= link_to 'contact', 'https://github.com/fdwills/'
+                -#%li= link_to 'Action3', '#'
+                -#%li.divider
+                -#%li.dropdown-header 'Nav header'
+                -#%li= link_to 'Separated link1', '#'
+                -#%li= link_to 'Separated link1', '#'
             - if login?
               %li= link_to "#{current_user.name}'s Home", me_user_path(current_user)
               %li= link_to 'logout', login_path, :confirm => 'Are you sure to logout?', :method => :delete

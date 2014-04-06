@@ -25,6 +25,13 @@
         %br
         %p.help-block A post is other albums except default album. You can add the same picture from gallery to different posts.
     %tr
+      %td Blog
+      %td
+        = link_to 'Blogs', me_user_blogs_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']
+        %br
+        %br
+        %p.help-block Create or edit your blog.
+    %tr
       %td Music
       %td
         = link_to 'musics', me_user_musics_path(current_user), class: ['col-sm-4', 'btn', 'btn-sm', 'btn-primary']

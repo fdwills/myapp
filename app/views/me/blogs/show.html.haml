@@ -1,0 +1,17 @@
+%table.table.table-condensed
+  %tr
+    %td.success
+      %h3 #{utf8_html(@blog.title)}(#{show_resource_state(@blog.state)})
+  %tr
+    -#%td= markdown(@blog.content)
+    %td= simple_format markdown(@blog.content)
+
+%center
+  - if @blog.prev(:me)
+    = link_to "< Prev", me_user_blog_path(current_user, @blog.prev(:me)), class: ['btn','btn-sm', 'btn-warning']
+  - if @blog.next(:me)
+    = link_to "Next >", me_user_blog_path(current_user, @blog.next(:me)), class: ['btn', 'btn-sm', 'btn-info']
+
+= link_to 'Edit', edit_me_user_blog_path(current_user, @blog)
+\|
+= link_to_function "Back", "history.back()"

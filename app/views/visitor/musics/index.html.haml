@@ -1,0 +1,14 @@
+%h3 Recent Upload
+%table.table.table-condensed
+  %tr.info
+    %th title
+    %th description
+    %th author
+    %th created at
+  - @musics.try(:each) do |music|
+    %tr
+      %td= link_to utf8_html(music.title), visitor_music_path(music)
+      %td= short_utf8_html(music.introduction, 16)
+      %td= link_to music.user.name, home_visitor_user_path(music.user)
+      %td= music.created_at.to_s(:db)
+%center= paginate @musics

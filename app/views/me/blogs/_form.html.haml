@@ -1,0 +1,14 @@
+.form-group
+  = t.label :title, 'Title', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.text_field :title, { value: utf8(@blog.title),  class: 'form-control', placeholder: 'Nickname'}
+    %p.help-block Input title within 255 characters.
+.form-group
+  = t.label :state, 'State', class: ['col-sm-3', 'control-label']
+  .col-sm-8
+    = t.select :state, [["release", "0"], ["draft", "1"]], {}, { class: 'form-control', placeholder: 'state'}
+    %p.help-block With release option, Blog with Draft option is for edit, will not be shown until state is changed.
+.form-group
+  = t.text_area :content, { value: utf8(@blog.content), class: 'form-control', placeholder: 'content', rows: 50}
+  %p.help-block Content supports Markdown format.
+

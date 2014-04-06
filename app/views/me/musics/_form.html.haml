@@ -7,7 +7,7 @@
   = t.label :state, 'State', class: ['col-sm-3', 'control-label']
   .col-sm-8
     = t.select :state, [["release", "0"], ["draft", "1"]], {}, { class: 'form-control', placeholder: 'state'}
-    %p.help-block With release option, music will be shown in album. Music with Draft option is for edit, will not be shown until state is changed(released is not avalibale now because of copyright problem).
+    %p.help-block With release option, music will be shown in album. Music with Draft option is for edit, will not be shown until state is changed.
 .form-group
   = t.label :introduction, 'introduction', class: ['col-sm-3', 'control-label']
   .col-sm-8

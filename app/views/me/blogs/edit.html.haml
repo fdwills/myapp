@@ -1,0 +1,8 @@
+- if @blog.errors.any?
+  = render partial: 'alert_error', locals: { model: @blog }
+= form_for :blog, method: 'put', url: me_user_blog_path(current_user, @blog), html: { class: 'form-horizontal', role: 'form' } do |t|
+  %h2 Update blog
+  = render partial: 'form', locals: { t: t}
+  .form-group
+    %br
+    %center= t.submit 'Update', class: ['btn', 'btn-md', 'btn-primary']

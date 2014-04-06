@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Blom'
+    %title= content_for?(:title) ? yield(:title) : 'BIM'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Share your album'}"}
     %meta{:property =>"wb:webmaster", :content =>"f5cf72c43a5da8ca"}
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
@@ -24,8 +24,8 @@
       %br
     .container
       .blog-header
-        %h1.blog-title Blom: An Image Blogger
-        %p.lead.blog-description Drive your blog like an album.
+        %h1.blog-title BIM: Blog, Image, Music
+        %p.lead.blog-description By wills.
       .col-sm-9.blog-main
         %p#notice= notice
         = yield
@@ -35,9 +35,8 @@
             About
           %div.collapse.in#about
             %p
-              I start the project from 2014.01 for fun. Try to make album more easier and give my alnum a
-              %em new life.
-              %p To use it:
+              I start the project from 2014.01.
+              %p How to generate a album:
               %p 1. Create an account.
               %p 2. Upload images and edit information.
               %p 3. Create an post.

@@ -1,0 +1,14 @@
+%h3 Recent Upload
+%table.table.table-condensed
+  %tr.info
+    %th title
+    %th content
+    %th author
+    %th created at
+  - @blogs.try(:each) do |blog|
+    %tr
+      %td= link_to utf8_html(blog.title), visitor_blog_path(blog)
+      %td= short_utf8_html(blog.content, 16)
+      %td= link_to blog.user.name, home_visitor_user_path(blog.user)
+      %td= blog.created_at.to_s(:db)
+%center= paginate @blogs

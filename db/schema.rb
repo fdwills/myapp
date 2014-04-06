@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324030959) do
+ActiveRecord::Schema.define(version: 20140324031059) do
+
+  create_table "blogs", force: true do |t|
+    t.integer  "user_id",                          null: false
+    t.string   "title",                            null: false
+    t.integer  "state",      limit: 1, default: 0, null: false
+    t.string   "tag"
+    t.binary   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "user_id",              default: 0
