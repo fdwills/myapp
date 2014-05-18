@@ -15,6 +15,7 @@ class Me::PostsController < MeController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @valid_resource = current_user.resources.released - @post.resources.released
   end
 
   # GET /posts/new

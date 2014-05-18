@@ -1,3 +1,5 @@
+.pull-right
+  = link_to 'delete this', me_user_post_path(current_user, @post), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: ['btn', 'btn-sm', 'btn-danger']
 %table.table.table-condensed
   %tr
     %th title
@@ -23,7 +25,7 @@
             %td= link_to 'delete', me_user_post_resource_path(current_user, post_resource), :method => :delete, :data => { :confirm => 'Are you sure?' }
         %tr
           = form_for :post_resource, method: 'post', url: me_user_post_resources_path(current_user), html: { class: 'form-horizontal', role: 'form' } do |t|
-            %td{colspan: 2}= t.select :resource_id, current_user.resources.map{|resource| [utf8_html(resource.safe_title), resource.id]},{}, { class: 'form-control' }
+            %td{colspan: 2}= t.select :resource_id, @valid_resource.map{|resource| [utf8_html(resource.safe_title), resource.id]},{}, { class: 'form-control' }
             = t.hidden_field :post_id, value: @post.id
             %td= t.submit 'add', class: ['btn', 'btn-sm', 'btn-primary']
 
