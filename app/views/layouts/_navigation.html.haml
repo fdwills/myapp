@@ -12,8 +12,8 @@
           = link_to 'BIM', root_path, class: 'navbar-brand'
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
-            %li= link_to 'Blog', visitor_blogs_path, class: 'active'
-            %li= link_to 'Image', visitor_posts_path
+            -#%li= link_to 'Blog', visitor_blogs_path, class: 'active'
+            %li= link_to 'Image', visitor_posts_path, class: 'active'
             %li= link_to 'Music', visitor_musics_path
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
