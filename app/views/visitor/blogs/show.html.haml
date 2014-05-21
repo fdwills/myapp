@@ -1,7 +1,7 @@
 %table.table.table-condensed
   %tr
     %td.success
-      %h3 #{utf8_html(@blog.title)}(#{show_resource_state(@blog.state)})
+      %h3 #{utf8_html(@blog.title)}
   %tr
     -#%td= markdown(@blog.content)
     %td= simple_format markdown(@blog.content)
